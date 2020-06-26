@@ -69,7 +69,7 @@ getWeather().then(sols => {
     displayPreviousSols(sols);
     updateUnits();
   });
-  //console.log(sols);
+  console.log(sols);
 });
 
 function getWeather() {
@@ -78,10 +78,10 @@ function getWeather() {
     .then(data => {
       const {
         sol_keys,
-        validity_checks,
+        validity_checks, 
         ...solData //will take everyting in 451,452,452
       } = data;
-      //console.log(data);
+      console.log(data);
       //const temp = Object.entries(solData).map(([sol, data]) => {
       return Object.entries(solData).map(([sol, data]) => {
         return {
@@ -97,6 +97,9 @@ function getWeather() {
       //console.log(temp)
     });
 }
+
+
+
 
 function displaySelectedSol(sols) {
   const selectedSol = sols[selectedSolIndex];
@@ -137,6 +140,7 @@ function displayPreviousSols(sols) {
   sols.forEach((solData, index) => {
     const solContainer = previousSolTemplate.content.cloneNode(true);
     solContainer.querySelector("[data-sol]").innerText = solData.sol;
+    console.log('this will popup in the middled of random func');
     solContainer.querySelector("[data-date").innerText = displayDate(
       solData.date
     );
@@ -170,3 +174,6 @@ function updateUnits() {
 function isMetric() {
   return metricRadio.checked;
 }
+console.log('the end');
+
+
